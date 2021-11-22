@@ -1992,7 +1992,7 @@ function Control() {
 function ControlPage() {
 	controlInput = 0;
 	for (i = 0; i < 5; i++) {
-		if (elements[page = 1][i] == null) {
+		if (elements[1][i] == null) {
 			controlInput += 1;
 		}
 		console.log(controlInput);
