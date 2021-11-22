@@ -2291,6 +2291,13 @@ function RemovePage() {
 let msg_success
 
 function AdvancePage() {
+	for (i = 0; i < 5; i++) {
+		if (isNullOrWhiteSpace(elements[page + 1][i])) {
+			msg_success = document.getElementById('msg-sucesso')
+			msg_success.classList.remove('hide');
+			document.getElementById("msg-sucesso").focus();
+		} 
+	}
 	try {
 		if (page < 9) {
 			if (CheckPageCompletion("advance")) {
@@ -2317,14 +2324,7 @@ function AdvancePage() {
 	} catch (e) {
 		console.log(e);
 	}
-
-	for (i = 0; i < 5; i++) {
-		if (isNullOrWhiteSpace(elements[page + 1][i])) {
-			msg_success = document.getElementById('msg-sucesso')
-			msg_success.classList.remove('hide');
-			document.getElementById("msg-sucesso").focus();
-		} 
-	}
+	
 	setTimeout(function () {
 		msg_success = document.getElementById('msg-sucesso')
 		msg_success.classList.add('hide');
