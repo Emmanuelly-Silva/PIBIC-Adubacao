@@ -1981,29 +1981,35 @@ function Control() {
 	if (confirm("Tem certeza que irá usar somente um adubo? Se sim, clique em ok") == true) {
 		//controlInput = 0;
 		PageControl = 1;
-		return PageControl;
-		console.log(controlInput);
+		console.log(PageControl);
 	} else {
 		PageControl = 2;
-		return PageControl;
 	}
+	return PageControl;
 }
 
 function ControlPage() {
-	controlInput = 0;
+	//controlInput = 0;
+	//page = 1;
 	for (i = 0; i < 5; i++) {
-		if (elements[1][i] == null) {
+		if (isNullOrWhiteSpace(elements[1][i])) {
 			controlInput += 1;
-		}
+		} else {
+		 	controlInput = 0;
+	 	}
 		console.log(controlInput);
 	}
-	return controlInput;
+	//return controlInput;
 
 }
 
-function Start() {
 
-	if (ControlPage() >= 5) {
+
+function Start() {
+	PageControl = 0;
+	controlInput = 0;
+	ControlPage()
+	if (controlInput == 5) {
 		Control();
 	}
 	if (PageControl == 0 || PageControl == 1) {
@@ -2030,10 +2036,8 @@ function Start() {
 			}
 			console.log(page);
 		}
-	}
-	else
+	} else
 		alert("Adicione um novo adubo.")
-
 }
 
 //Auxiliary Functions
@@ -2291,9 +2295,7 @@ function RemovePage() {
 let msg_success
 
 function AdvancePage() {
-	msg_success = document.getElementById('msg-sucesso')
-	msg_success.classList.remove('hide');
-	document.getElementById("msg-sucesso").focus();
+
 	try {
 		if (page < 9) {
 			if (CheckPageCompletion("advance")) {
@@ -2311,6 +2313,9 @@ function AdvancePage() {
 					document.getElementById("inputNAdubo").value = "";
 					document.getElementById("inputPAdubo").value = "";
 					document.getElementById("inputKAdubo").value = "";
+					msg_success = document.getElementById('msg-sucesso')
+					msg_success.classList.remove('hide');
+					document.getElementById("msg-sucesso").focus();
 				}
 				console.log(page);
 			}
@@ -2322,12 +2327,12 @@ function AdvancePage() {
 	}
 	setTimeout(function () {
 		msg_success = document.getElementById('msg-sucesso')
-		msg_success.classList.add('hide');
-	}, 8000);
+		msg_success.classList.toggle('hide');
+	}, 6000);
 	//controlInput = 2;
 
 
-
+	console.log(page);
 }
 
 
