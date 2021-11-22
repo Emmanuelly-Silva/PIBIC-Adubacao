@@ -1989,25 +1989,24 @@ function Control() {
 }
 
 function ControlPage() {
-	controlInput = 0;
+	//controlInput = 0;
 	for (i = 0; i < 5; i++) {
 		if (isNullOrWhiteSpace(elements[1][i])) {
 			controlInput += 1;
 		} else {
-		 	controlInput = 0;
-	 	}
+			controlInput = 0;
+		}
 	}
 	console.log(controlInput);
 	return controlInput;
-	
+
 }
-
-
 
 function Start() {
 	//PageControl = 0;
 	//controlInput = 0;
-	if (ControlPage() == 5) {
+	//ControlPage()
+	if (controlInput == 5) {
 		Control();
 	}
 	if (PageControl == 0 || PageControl == 1) {
@@ -2034,8 +2033,7 @@ function Start() {
 			}
 			console.log(page);
 		}
-	} else
-		alert("Adicione um novo adubo.")
+	}
 }
 
 //Auxiliary Functions
@@ -2293,7 +2291,6 @@ function RemovePage() {
 let msg_success
 
 function AdvancePage() {
-
 	try {
 		if (page < 9) {
 			if (CheckPageCompletion("advance")) {
@@ -2311,9 +2308,6 @@ function AdvancePage() {
 					document.getElementById("inputNAdubo").value = "";
 					document.getElementById("inputPAdubo").value = "";
 					document.getElementById("inputKAdubo").value = "";
-					msg_success = document.getElementById('msg-sucesso')
-					msg_success.classList.remove('hide');
-					document.getElementById("msg-sucesso").focus();
 				}
 				console.log(page);
 			}
@@ -2323,9 +2317,17 @@ function AdvancePage() {
 	} catch (e) {
 		console.log(e);
 	}
+
+	for (i = 0; i < 5; i++) {
+		if (isNullOrWhiteSpace(elements[page + 1][i])) {
+			msg_success = document.getElementById('msg-sucesso')
+			msg_success.classList.remove('hide');
+			document.getElementById("msg-sucesso").focus();
+		} 
+	}
 	setTimeout(function () {
 		msg_success = document.getElementById('msg-sucesso')
-		msg_success.classList.toggle('hide');
+		msg_success.classList.add('hide');
 	}, 6000);
 	//controlInput = 2;
 
