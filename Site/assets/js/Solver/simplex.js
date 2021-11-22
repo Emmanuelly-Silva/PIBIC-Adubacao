@@ -1978,7 +1978,7 @@ function stripChar(InString, symbol) {
 }
 
 function Control() {
-	if (confirm("Tem certeza que irá usar somente um adubo? Se sim, clique em ok") == true) {
+	if (confirm("Tem certeza que irá usar somente um adubo? Se sim, clique em ok.") == true) {
 		//controlInput = 0;
 		PageControl = 1;
 		console.log(PageControl);
@@ -1989,27 +1989,25 @@ function Control() {
 }
 
 function ControlPage() {
-	//controlInput = 0;
-	//page = 1;
+	controlInput = 0;
 	for (i = 0; i < 5; i++) {
 		if (isNullOrWhiteSpace(elements[1][i])) {
 			controlInput += 1;
 		} else {
 		 	controlInput = 0;
 	 	}
-		console.log(controlInput);
 	}
-	//return controlInput;
-
+	console.log(controlInput);
+	return controlInput;
+	
 }
 
 
 
 function Start() {
-	PageControl = 0;
-	controlInput = 0;
-	ControlPage()
-	if (controlInput == 5) {
+	//PageControl = 0;
+	//controlInput = 0;
+	if (ControlPage() == 5) {
 		Control();
 	}
 	if (PageControl == 0 || PageControl == 1) {
